@@ -23,7 +23,7 @@ namespace JustEat.TechTest.UnitTests.MappingProfiles
         {
             // Arrange
             const string expectedRestaurantName = "MyRestaurantName";
-            var restaurant = new Restaurant { Name = expectedRestaurantName };
+            var restaurant = new RestaurantSearchResult { Name = expectedRestaurantName };
             Mapper.Initialize(m => m.AddProfile<RestaurantMappingProfile>());
 
             // Act
@@ -38,7 +38,7 @@ namespace JustEat.TechTest.UnitTests.MappingProfiles
         {
             // Arrange
             const double expectedRatingAverage = 4.0;
-            var restaurant = new Restaurant { RatingAverage = expectedRatingAverage };
+            var restaurant = new RestaurantSearchResult { RatingAverage = expectedRatingAverage };
             Mapper.Initialize(m => m.AddProfile<RestaurantMappingProfile>());
 
             // Act
@@ -55,7 +55,7 @@ namespace JustEat.TechTest.UnitTests.MappingProfiles
             var expectedCuisineTypes = new List<string> {"Italian", "Pizza"};
             var cuisineTypes = new List<CuisineType> {new CuisineType { Name = expectedCuisineTypes[0] }, new CuisineType { Name = expectedCuisineTypes[1] } };
 
-            var restaurant = new Restaurant {  CuisineTypes = cuisineTypes };
+            var restaurant = new RestaurantSearchResult {  CuisineTypes = cuisineTypes };
             Mapper.Initialize(m => m.AddProfile<RestaurantMappingProfile>());
 
             // Act
@@ -69,7 +69,7 @@ namespace JustEat.TechTest.UnitTests.MappingProfiles
         public void Successfully_Maps_A_Collection_Of_Restaurants_To_A_Collection_Of_RestaurantResponses()
         {
             // Arrange
-            var restaurantList = new List<Restaurant> { new Restaurant(), new Restaurant() };            
+            var restaurantList = new List<RestaurantSearchResult> { new RestaurantSearchResult(), new RestaurantSearchResult() };            
             Mapper.Initialize(m => m.AddProfile<RestaurantMappingProfile>());
 
             // Act

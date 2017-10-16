@@ -4,6 +4,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using JustEat.TechTest.WebApi.Clients;
+using JustEat.TechTest.WebApi.Configuration;
 
 namespace JustEat.TechTest.WebApi.Installers
 {
@@ -15,14 +16,14 @@ namespace JustEat.TechTest.WebApi.Installers
             container.Register(Component.For<HttpClient>().Instance(singletonHttpClient));
 
             container.Register(
-                Component.For<IRestaurantOriginClient>()
-                    .ImplementedBy<RestaurantOriginHttpClient>()
-                    .DependsOn(Dependency.OnValue("requestUriFormat", "http://public.je-apis.com/restaurants/?q={0}"))
-                    .DependsOn(Dependency.OnValue("tenant", "uk"))
-                    .DependsOn(Dependency.OnValue("language", "en-GB"))
-                    .DependsOn(Dependency.OnValue("authenticationSchemes", AuthenticationSchemes.Basic))
-                    .DependsOn(Dependency.OnValue("accessToken", "VGVjaFRlc3RBUEk6dXNlcjI="))
-                    .DependsOn(Dependency.OnValue("host", "public.je-apis.com"))
+                Component.For<IRestaurantSearchClient>()
+                    .ImplementedBy<RestaurantSearchHttpClient>()
+                    .DependsOn(Dependency.OnValue("requestUriFormat", Settings.Uri.RequestUriFormat))
+                    .DependsOn(Dependency.OnValue("tenant", Settings.RequestHeaders.Tenant))
+                    .DependsOn(Dependency.OnValue("language", Settings.RequestHeaders.Language))
+                    .DependsOn(Dependency.OnValue("authenticationSchemes", Settings.RequestHeaders.AuthenticationScheme))
+                    .DependsOn(Dependency.OnValue("authorizationToken", Settings.RequestHeaders.AuthorizationToken))
+                    .DependsOn(Dependency.OnValue("host", Settings.RequestHeaders.Host))
                     .LifestyleSingleton());
         }
     }

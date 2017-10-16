@@ -3,8 +3,8 @@ using JustEat.TechTest.WebApi.DTO;
 
 namespace JustEat.TechTest.WebApi.Clients
 {
-    public interface IRestaurantOriginClient
+    public interface IRestaurantSearchClient
     {
-        Task<RestaurantOriginResponse> GetRestaurants(string outcode);
+        Task<GetRestaurantResult> GetRestaurants(string outcode);
     }
 }

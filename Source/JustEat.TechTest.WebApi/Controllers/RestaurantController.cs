@@ -6,7 +6,7 @@ using JustEat.TechTest.WebApi.Services;
 
 namespace JustEat.TechTest.WebApi.Controllers
 {
-    [RoutePrefix("api/restaurant")]
+    [RoutePrefix("restaurants")]
     public class RestaurantController : ApiController
     {
         private readonly IRestaurantService _restaurantService;

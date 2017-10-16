@@ -13,13 +13,13 @@ namespace JustEat.TechTest.UnitTests.Services
     [TestFixture]
     public class RestaurantServiceShould
     {
-        private Mock<IRestaurantOriginClient> _restaurantOriginClientMock;
+        private Mock<IRestaurantSearchClient> _restaurantOriginClientMock;
         private Mock<IMapper> _mapperMock;
 
         [SetUp]
         public void SetUp()
         {
-            _restaurantOriginClientMock = new Mock<IRestaurantOriginClient>();
+            _restaurantOriginClientMock = new Mock<IRestaurantSearchClient>();
             _mapperMock = new Mock<IMapper>();
         }
 
@@ -29,7 +29,7 @@ namespace JustEat.TechTest.UnitTests.Services
             // Arrange
             const string expectedOutcode = "SE19";
             var restaurantService = new RestaurantService(_restaurantOriginClientMock.Object, _mapperMock.Object);
-            var originResponse = new RestaurantOriginResponse { Restaurants = new List<Restaurant>() };
+            var originResponse = new GetRestaurantResult { Restaurants = new List<RestaurantSearchResult>() };
             _restaurantOriginClientMock.Setup(x => x.GetRestaurants(expectedOutcode)).ReturnsAsync(originResponse);
             // Act
             await restaurantService.GetRestaurantsAsync(expectedOutcode);
@@ -42,8 +42,8 @@ namespace JustEat.TechTest.UnitTests.Services
         public async Task Call_Mapper_With_Result_From_RestaurantOriginClient()
         {
             // Arrange            
-            var expectedRestaurants = new List<Restaurant>();
-            var expectedOriginResponse = new RestaurantOriginResponse { Restaurants = expectedRestaurants };
+            var expectedRestaurants = new List<RestaurantSearchResult>();
+            var expectedOriginResponse = new GetRestaurantResult { Restaurants = expectedRestaurants };
             _restaurantOriginClientMock.Setup(x => x.GetRestaurants(It.IsAny<string>()))
                 .ReturnsAsync(expectedOriginResponse);
             var restaurantService = new RestaurantService(_restaurantOriginClientMock.Object, _mapperMock.Object);
@@ -60,12 +60,12 @@ namespace JustEat.TechTest.UnitTests.Services
         {
             // Arrange                        
             var expectedRestaurantsResponse = new List<RestaurantResponse>();
-            var originResponse = new RestaurantOriginResponse {  Restaurants = new List<Restaurant>() };
+            var originResponse = new GetRestaurantResult {  Restaurants = new List<RestaurantSearchResult>() };
 
             _restaurantOriginClientMock.Setup(x => x.GetRestaurants(It.IsAny<string>()))
                 .ReturnsAsync(originResponse);
 
-            _mapperMock.Setup(x => x.Map<IEnumerable<RestaurantResponse>>(It.IsAny<IEnumerable<Restaurant>>()))
+            _mapperMock.Setup(x => x.Map<IEnumerable<RestaurantResponse>>(It.IsAny<IEnumerable<RestaurantSearchResult>>()))
                 .Returns(expectedRestaurantsResponse);
 
             var restaurantService = new RestaurantService(_restaurantOriginClientMock.Object, _mapperMock.Object);

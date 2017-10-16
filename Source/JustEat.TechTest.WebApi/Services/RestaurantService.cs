@@ -8,18 +8,18 @@ namespace JustEat.TechTest.WebApi.Services
 {
     public class RestaurantService : IRestaurantService
     {
-        private readonly IRestaurantOriginClient _restaurantOriginClient;
+        private readonly IRestaurantSearchClient _restaurantSearchClient;
         private readonly IMapper _mapper;        
 
-        public RestaurantService(IRestaurantOriginClient restaurantOriginClient, IMapper mapper)
+        public RestaurantService(IRestaurantSearchClient restaurantSearchClient, IMapper mapper)
         {
-            _restaurantOriginClient = restaurantOriginClient;
+            _restaurantSearchClient = restaurantSearchClient;
             _mapper = mapper;            
         }
 
         public async Task<IEnumerable<RestaurantResponse>> GetRestaurantsAsync(string outcode)
         {
-            var response = await _restaurantOriginClient.GetRestaurants(outcode);
+            var response = await _restaurantSearchClient.GetRestaurants(outcode);
             return _mapper.Map<IEnumerable<RestaurantResponse>>(response.Restaurants);
         }
     }

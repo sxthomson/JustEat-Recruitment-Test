@@ -2,9 +2,9 @@
 
 namespace JustEat.TechTest.WebApi.DTO
 {
-    public class RestaurantOriginResponse
+    public class GetRestaurantResult
     {
-        public IEnumerable<Restaurant> Restaurants { get; set; }
+        public IEnumerable<RestaurantSearchResult> Restaurants { get; set; }
         public string ShortResultText { get; set; }
         public string Area { get; set; }
         public object Errors { get; set; }

@@ -9,7 +9,7 @@ namespace JustEat.TechTest.WebApi.MappingProfiles
     {
         public RestaurantMappingProfile()
         {
-            CreateMap<Restaurant, RestaurantResponse>()
+            CreateMap<RestaurantSearchResult, RestaurantResponse>()
                 .ForMember(d => d.Name,
                     opt => opt.MapFrom(src => src.Name)
                 )

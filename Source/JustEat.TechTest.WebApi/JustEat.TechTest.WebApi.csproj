@@ -125,13 +125,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Clients\IRestaurantOriginClient.cs" />
+    <Compile Include="Clients\IRestaurantSearchClient.cs" />
+    <Compile Include="Configuration\Settings.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="DTO\CuisineType.cs" />
+    <Compile Include="DTO\Deal.cs" />
     <Compile Include="DTO\Logo.cs" />
     <Compile Include="DTO\MetaData.cs" />
-    <Compile Include="DTO\Restaurant.cs" />
-    <Compile Include="DTO\RestaurantOriginResponse.cs" />
+    <Compile Include="DTO\RestaurantSearchResult.cs" />
+    <Compile Include="DTO\GetRestaurantResult.cs" />
     <Compile Include="DTO\TagDetail.cs" />
     <Compile Include="IoC\CastleWindsorDependencyScope.cs" />
     <Compile Include="IoC\CastleWindsorHttpDependencyResolver.cs" />
@@ -140,7 +142,7 @@
     <Compile Include="IoC\Installers\ServicesInstaller.cs" />
     <Compile Include="IoC\Installers\MapperInstaller.cs" />
     <Compile Include="MappingProfiles\RestaurantMappingProfile.cs" />
-    <Compile Include="Clients\RestaurantOriginHttpClient.cs" />
+    <Compile Include="Clients\RestaurantSearchHttpClient.cs" />
     <Compile Include="Services\RestaurantService.cs" />
     <Compile Include="Services\IRestaurantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

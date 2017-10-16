@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JustEat.TechTest.WebApi.DTO
 {
-    public class Restaurant
+    public class RestaurantSearchResult
     {
         public IEnumerable<object> Badges { get; set; }
         public double Score { get; set; }
@@ -46,7 +46,7 @@ namespace JustEat.TechTest.WebApi.DTO
         public bool IsOpenNowForCollection { get; set; }
         public double RatingStars { get; set; }
         public IEnumerable<Logo> Logo { get; set; }
-        public IEnumerable<object> Deals { get; set; }
+        public IEnumerable<Deal> Deals { get; set; }
         public int NumberOfRatings { get; set; }
     }
 }

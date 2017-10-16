@@ -17,7 +17,8 @@ namespace JustEat.TechTest.WebApi.Installers
                     {
                         c.AddProfile<RestaurantMappingProfile>();
                     }).CreateMapper();
-                }));
+                }));            
+                
         }
     }
 }
