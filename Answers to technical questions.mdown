@@ -1,0 +1,76 @@
+# Answers To Technical Questions
+
+ ### Question 1
+ I spent around 3.5 / 4 hours on the test as recommended by the Candidate Guidance Notes PDF sent over by Just Eat's internal recruiter.  If given more time, I would look to make the API more "production ready" by introducing logging, performance counters or suitable telemetry.  In addition, my acceptance tests would ideally stub out Just Eat's API as to not be dependent on a production API for testing.  It would also allow for known data to be used to allow me to make assertions against that known source data.
+
+ I would also look to return more meaningful status codes.  However I would need more information on the behaviour of the API, e.g. would an outcode that doesn't exist be a 400 or a 404?  I would also add better exception handling in general, particularly around the outbound calls to Just Eat's API.  Right now the API only satisfies the single happy path that was supplied.  But, as with the status codes, acceptance criteria needs to be provided to ensure no wrong assumptions are made.
+
+### Question 2
+Probably my favourite inclusion in C# 7 is the syntactic sugar around out variables.  It's a really simple change that allows the developer to declare an out variable when passing it to a method.  This small change, in my opinion, results in cleaner code.  I'm a big fan in general of anything added that results in the removal of superfluous lines of code.
+
+```c#
+// Before
+var dateString = "16-Oct-2017"
+DateTime date;
+if (DateTime.TryParse(dateString, out date)) 
+{
+	DoSomething(date);
+}
+
+// After
+var dateString = "16-Oct-2017"
+if (DateTime.TryParse(dateString, out DateTime date)) 
+{
+	DoSomething(date);
+}
+```
+### Question 3
+To track down a performance issue in production I would ideally have access to performance counters, trace logs and general telemetry for the application.  If there isn't enough information available then I'd look to add more logging and performance counters in an attempt to pinpoint where in the application we're seeing the performance issue.  Often when developing I'll add a lot of logging that can be toggled on/off based on a config driven logging level (i.e. Informational and above).   It's extremely important to have performance counters or similar around methods that access things like databases or distributed caches to see if there's a hardware based bottleneck.
+
+If it's still not clear why the application isn't performing as it should you can use tools like JetBrains DotTrace.  What I've tried to do in this situation is, where possible, restore production data to my development environment and recreate user / system behaviour.
+
+### Question 4
+For the endpoint that I used it appears the Swagger UI live documentation is slightly out of date.  It states that a Version header is required but in practice, it isn't.  Also, the returned object schema on Swagger doesn't match what is actually returned.  An example of this is the RestaurantSearchResult, when queried, had a collection of Tags and Badges, but these weren't mentioned in the documentation.
+
+I would probably also query why the response has it's cache-control header set to private.  The response size is large and certainly for what I've had to use it for wouldn't change all that often.  There may be a valid reason for this but I would certainly ask the question as to why clients couldn't cache the response for even 10 minutes.
+
+### Question 5
+```json
+{
+	"firstName": "Scott",
+	"lastName": "Thomson",
+	"nationality": "British",
+	"dateOfBirth": "1989-04-16T00:00:00Z",
+	"technicalSkills": {
+		"languages": [
+			"C#", 
+			"JavaScript", 
+			"TypeScript", 
+			"T-SQL", 
+			"HTML", 
+			"CSS"
+		],
+		"frameworks": [
+			".NET 4.6", 
+			"ASP.NET MVC", 
+			"ASP.NET Web API", 
+			"Dapper", 
+			"SpecFlow"
+		],
+		"methodologies": [
+			"SCRUM", 
+			"Kanban", 
+			"TDD", 
+			"ATDD"
+		]
+	},
+	"interests": [
+		"Sport", 
+		"Music", 
+		"Craft Beer"
+	],
+	"personalityTraits": [
+		"Enthusiastic", "Driven", "Ambitious"
+	]
+}
+```
