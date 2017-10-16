@@ -13,7 +13,7 @@ namespace JustEat.TechTest.AcceptanceTests.Steps
         private string _outcode;
         private HttpResponseMessage _httpResponseMessage;
 
-        [Given(@"a known outcode (.*)")]
+        [Given(@"a known outcode ""(.*)""")]
         public void GivenAKnownOutcode(string outcode)
         {
             _outcode = outcode;
@@ -22,7 +22,7 @@ namespace JustEat.TechTest.AcceptanceTests.Steps
         [When(@"I request restaurant information from the api")]
         public async Task WhenIRequestRestaurantInformationFromTheApi()
         {
-            _httpResponseMessage = await ApiClient.GetAsync("/api/restaurant/" + _outcode);
+            _httpResponseMessage = await ApiClient.GetAsync("/restaurants/" + _outcode);
         }
 
         [Then(@"restaurants are returned")]

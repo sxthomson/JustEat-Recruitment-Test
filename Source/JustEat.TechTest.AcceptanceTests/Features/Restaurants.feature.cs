@@ -69,14 +69,13 @@ namespace JustEat.TechTest.AcceptanceTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Known outcodes return restaurants")]
-        [NUnit.Framework.TestCaseAttribute("SE19", null)]
-        public virtual void KnownOutcodesReturnRestaurants(string outcode, string[] exampleTags)
+        public virtual void KnownOutcodesReturnRestaurants()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Known outcodes return restaurants", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Known outcodes return restaurants", ((string[])(null)));
 #line 9
 this.ScenarioSetup(scenarioInfo);
 #line 10
- testRunner.Given(string.Format("a known outcode {0}", outcode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a known outcode \"SE19\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
  testRunner.When("I request restaurant information from the api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
@@ -87,17 +86,16 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Known outcodes return name, cuisine types and ratings of restaurants")]
-        [NUnit.Framework.TestCaseAttribute("SE19", null)]
-        public virtual void KnownOutcodesReturnNameCuisineTypesAndRatingsOfRestaurants(string outcode, string[] exampleTags)
+        public virtual void KnownOutcodesReturnNameCuisineTypesAndRatingsOfRestaurants()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Known outcodes return name, cuisine types and ratings of restaurants", exampleTags);
-#line 18
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Known outcodes return name, cuisine types and ratings of restaurants", ((string[])(null)));
+#line 14
 this.ScenarioSetup(scenarioInfo);
-#line 19
- testRunner.Given(string.Format("a known outcode {0}", outcode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 20
+#line 15
+ testRunner.Given("a known outcode \"SE19\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 16
  testRunner.When("I request restaurant information from the api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 21
+#line 17
  testRunner.Then("the name, cuisine types and ratings of the restaurants are returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
