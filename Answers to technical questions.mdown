@@ -67,10 +67,13 @@ I would probably also query why the response has it's cache-control header set t
 	"interests": [
 		"Sport", 
 		"Music", 
-		"Craft Beer"
+		"Craft Beer",
+		"Trainers"
 	],
 	"personalityTraits": [
-		"Enthusiastic", "Driven", "Ambitious"
+		"Enthusiastic",
+		"Driven",
+		"Ambitious",		
 	]
 }
 ```
